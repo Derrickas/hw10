@@ -1,40 +1,42 @@
-const inquirer = require('./inquirer')
-const manager = require('./templates/manager')
-const engineer = require('./templates/engineer')
-const intern = require('./templates/intern')
+const inquirer = require('inquirer')
+// const manager = require('templates/manager')
+// const engineer = require('../templates/engineer')
+// const intern = require('../templates/intern')
 
-
-function init() {
-    inquirer
-    .prompt([{
+inquirer
+    .prompt([
+        {
+            message: "what is your Name?",
+            name: "name",
+        },
+        {
+            message: "what is your email?",
+            name: 'email',
+        },
+        {
+            message: "what is your office number?",
+            name: 'officeNumber'
+        },
+        {
+            message: "what school did you attend?",
+            name: 'school'
+        },
+        {
+            message: "what is your github username?",
+            name: 'username'
+        },
+        {
+        type: 'list',
         message: "what is your occupation?",
         name: "occupation",
         choices: ['Manager', 'Engineer', 'Intern']
-    }])
+    },
+])
     .then(answers => {
+        console.log(answers)
+    });
 
-    switch(answers) {
-        case "Manager": inquirer
-        .prompt([{
-            message: "what is your office Number?",
-            name: "officeNumber"
-
-    }])
-
-         case "Engineer": inquirer
-         .prompt([{
-             message: 'what is your github?',
-             name: "github"
-         }])
-
-         case "Intern": inquirer
-         .prompt([{
-             message: 'where did you go to school?',
-             name: "school"
-         }])
-    }
-    
-    }
+    module.exports = answers
      
      
      
@@ -43,10 +45,3 @@ function init() {
      
      
      
-     
-     message: 'What is your employees name?'
-        name:'name'
-    ]
-    })
-}
-inquirer.prompt(questions)
